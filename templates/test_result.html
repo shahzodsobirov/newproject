@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/test_result.css">
+</head>
+<body>
+<div class="menu">
+    <a href="">Home</a>
+    <a href="{{ url_for("register") }}">Register</a>
+    <a href="{{ url_for("login") }}">Login</a>
+    <a href="{{ url_for("register_teacher") }}">Add teacher</a>
+    <a href="{{ url_for("creat_group") }}">Creat group</a>
+    <a href="{{ url_for("profile") }}">Profile</a>
+    <a href="{{ url_for("groups") }}">Groups</a>
+    <a href="{{ url_for("ielts_result") }}">Ielts_result</a>
+    <a href="{{ url_for("choose") }}">creat_question</a>
+    <a href="{{ url_for("subject") }}">subject</a>
+    <a href="{{ url_for("levels") }}">levels</a>
+</div>
+<table>
+    <tr>
+        <th>Student name</th>
+        <th>Reading</th>
+        <th>Listening</th>
+        <th>Writing</th>
+        <th>Speaking</th>
+    </tr>
+        {% for group in group %}
+            {% for st in group.student %}
+                <tr>
+                    <td class="name" data-id="{{ st.user.id }}">{{ st.user.name }}</td>
+                    <td><input class="reading" type="text" name="reading"></td>
+                    <td><input class="listening" type="text" name="listening"></td>
+                    <td><input class="writing" type="text" name="writing"></td>
+                    <td><input class="speaking" type="text" name="spaeking"></td>
+                </tr>
+            {% endfor %}
+            <button>Sumbit</button>
+        {% endfor %}
+</table>
+<script src="../static/JS/result.js"></script>
+</body>
+</html>

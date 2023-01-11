@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+    <link rel="stylesheet" href="../static/main.css">
+</head>
+<body>
+<h1>Hello! {{ user.name }}</h1>
+<div class="menu">
+    <a href="">Home</a>
+    <a href="{{ url_for("register") }}">Register</a>
+    <a href="{{ url_for("login") }}">Login</a>
+    <a href="{{ url_for("register_teacher") }}">Add teacher</a>
+    <a href="{{ url_for("creat_group") }}">Creat group</a>
+    <a href="{{ url_for("profile") }}">Profile</a>
+    <a href="{{ url_for("groups") }}">Groups</a>
+    <a href="{{ url_for("ielts_result") }}">Ielts_result</a>
+    <a href="{{ url_for("choose") }}">creat_question</a>
+    <a href="{{ url_for("subject") }}">subject</a>
+    <a href="{{ url_for("levels") }}">levels</a>
+</div>
+<div class="info">
+    <div class="info_student">
+        <h1>User info</h1>
+        <div class="bio">
+            <h3 class="table">Name</h3>
+            <h3 class="infoo">{{ user.name }}</h3>
+        </div>
+        <div class="bio">
+            <h3 class="table">Surname</h3>
+            <h3 class="infoo">{{ user.surname }}</h3>
+        </div>
+        <div class="bio">
+            <h3 class="table">Number</h3>
+            <h3 class="infoo">{{ user.number }}</h3>
+        </div>
+        <div class="bio">
+            <h3 class="table">Birthday</h3>
+            <h3 class="infoo">{{ user.birthday }}</h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>

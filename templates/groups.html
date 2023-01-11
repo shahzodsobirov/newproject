@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/groups.css">
+</head>
+<body>
+<div class="menu">
+    <a href="">Home</a>
+    <a href="{{ url_for("register") }}">Register</a>
+    <a href="{{ url_for("login") }}">Login</a>
+    <a href="{{ url_for("register_teacher") }}">Add teacher</a>
+    <a href="{{ url_for("creat_group") }}">Creat group</a>
+    <a href="{{ url_for("profile") }}">Profile</a>
+    <a href="{{ url_for("groups") }}">Groups</a>
+    <a href="{{ url_for("ielts_result") }}">Ielts_result</a>
+    <a href="{{ url_for("choose") }}">creat_question</a>
+    <a href="{{ url_for("subject") }}">subject</a>
+    <a href="{{ url_for("levels") }}">levels</a>
+</div>
+<div class="groups">
+    {% for group in group %}
+        <a href="{{ url_for("test_result") }}">
+            <div class="box">
+                <h3>{{ group.name }}</h3>
+                <ul>
+                    {% for st in group.student %}
+                        <li>{{ st.user.name }}</li>
+                    {% endfor %}
+                </ul>
+                <h3></h3>
+            </div>
+        </a>
+
+    {% endfor %}
+</div>
+</body>
+</html>

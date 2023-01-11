@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/crear%20group.css">
+
+</head>
+<body>
+<div class="menu">
+    <a href="">Home</a>
+    <a href="{{ url_for("register") }}">Register</a>
+    <a href="{{ url_for("login") }}">Login</a>
+    <a href="{{ url_for("register_teacher") }}">Add teacher</a>
+    <a href="{{ url_for("creat_group") }}">Creat group</a>
+    <a href="{{ url_for("profile") }}">Profile</a>
+    <a href="{{ url_for("groups") }}">Groups</a>
+    <a href="{{ url_for("ielts_result") }}">Ielts_result</a>
+    <a href="{{ url_for("choose") }}">creat_question</a>
+    <a href="{{ url_for("subject") }}">subject</a>
+    <a href="{{ url_for("levels") }}">levels</a>
+</div>
+<div class="container">
+    <form action="{{ url_for("creat_group") }}" method="post">
+        <input class="name" type="text" placeholder="Enter name" name="name">
+        <select name="teacher" id="">
+            {% for teacher in teacher %}
+                <option value="{{ teacher.id }}">{{ teacher.name }}</option>
+            {% endfor %}
+        </select>
+        <div class="add_user">
+            {% for student in student %}
+                <div class="user">
+                    <p>{{ student.name }} {{ student.surname }}</p>
+                    <input class="checkbox" type="checkbox" data-id="{{ student.id }}" {% if student.status %}
+                           checked {% endif %}>
+                </div>
+            {% endfor %}
+        </div>
+        <button>Register</button>
+    </form>
+</div>
+
+<script>
+    let checkboxes = document.querySelectorAll('.checkbox');
+    checkboxes.forEach((check,) => {
+        check.addEventListener('change', function () {
+            let student_id = check.dataset.id
+            console.log(check.checked)
+            fetch('/change_status/' + student_id, {
+                method: "POST",
+                body: JSON.stringify({
+                    "value": check.checked,
+                }),
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            })
+        })
+    })
+
+</script>
+</body>
+</html>

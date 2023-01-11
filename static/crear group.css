@@ -1,0 +1,80 @@
+body{
+    background-color: deepskyblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.menu{
+    width: 1400px;
+    height: 50px;
+    border-radius: 10px;
+    background-image: linear-gradient(to left, #0061ff, #60efff);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.menu a{
+    text-decoration: none;
+    color: #0f536a;
+    font-size: 30px;
+}
+.container{
+    width: 500px;
+    height: 600px;
+    border: #023e8a 4px solid;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+}
+.name{
+    width: 400px;
+    height: 30px;
+    background-color: white;
+    border: none;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+button{
+    width: 200px;
+    height: 30px;
+    border: none;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.add_user{
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+.user{
+    width: 380px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px black solid;
+}
+p{
+    width: 200px;
+    font-size: 15px;
+}
+.check{
+    width: 100px;
+}
+select{
+    width: 400px;
+    height: 30px;
+    background-color: white;
+    border: none;
+    margin-top: 20px;
+    border-radius: 10px;
+}

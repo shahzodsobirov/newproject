@@ -1,0 +1,40 @@
+.groups{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.box{
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 2px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+body {
+    background-color: deepskyblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu {
+    width: 1400px;
+    height: 50px;
+    border-radius: 10px;
+    background-image: linear-gradient(to left, #0061ff, #60efff);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #0f536a;
+    font-size: 30px;
+}

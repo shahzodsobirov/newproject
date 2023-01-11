@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/ielts.css">
+</head>
+<body>
+<div class="menu">
+    <a href="">Home</a>
+    <a href="{{ url_for("register") }}">Register</a>
+    <a href="{{ url_for("login") }}">Login</a>
+    <a href="{{ url_for("register_teacher") }}">Add teacher</a>
+    <a href="{{ url_for("creat_group") }}">Creat group</a>
+    <a href="{{ url_for("profile") }}">Profile</a>
+    <a href="{{ url_for("groups") }}">Groups</a>
+    <a href="{{ url_for("ielts_result") }}">Ielts_result</a>
+    <a href="{{ url_for("choose") }}">creat_question</a>
+    <a href="{{ url_for("subject") }}">subject</a>
+    <a href="{{ url_for("levels") }}">levels</a>
+</div>
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Reading</th>
+        <th>Listening</th>
+        <th>Writing</th>
+        <th>Speaking</th>
+        <th>Ielts</th>
+    </tr>
+    {% for res in result %}
+            <tr>
+                <td>{{ res.student.user.name }} {{ res.student.user.surname }}</td>
+                <td>{{ res.reading }}</td>
+                <td>{{ res.listening }}</td>
+                <td>{{ res.writing}}</td>
+                <td>{{ res.speaking }}</td>
+                <td>{{ res.overal }}</td>
+            </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

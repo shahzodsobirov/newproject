@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/main.css">
+</head>
+<body>
+<div class="menu">
+    <a href="">Home</a>
+    <a href="{{ url_for("register") }}">Register</a>
+    <a href="{{ url_for("login") }}">Login</a>
+    <a href="{{ url_for("register_teacher") }}">Add teacher</a>
+    <a href="{{ url_for("creat_group") }}">Creat group</a>
+    <a href="{{ url_for("profile") }}">Profile</a>
+    <a href="{{ url_for("groups") }}">Groups</a>
+    <a href="{{ url_for("ielts_result") }}">Ielts_result</a>
+    <a href="{{ url_for("choose") }}">creat_question</a>
+    <a href="{{ url_for("subject") }}">subject</a>
+    <a href="{{ url_for("levels") }}">levels</a>
+</div>
+<div class="container">
+    <form action="{{ url_for("register_teacher") }}" method="post">
+        <input type="text" placeholder="Enter name" name="name">
+        <input type="text" placeholder="Enter surname" name="surname">
+        <input type="text" placeholder="Enter number" name="number">
+        <input type="text" placeholder="Enter birthday" name="birthday">
+        <input type="password" placeholder="Enter password" name="password">
+        <button>Register</button>
+    </form>
+</div>
+</body>
+</html>
