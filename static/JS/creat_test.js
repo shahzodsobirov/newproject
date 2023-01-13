@@ -39,7 +39,6 @@ let question = document.querySelector(".question"), button = document.querySelec
     lev = document.querySelector(".lev"), checkboxes = document.querySelectorAll(".checkbox"),
     sub = document.querySelector(".sub"),
     variantsList = document.querySelector(".variant");
-
 let question_list = [
     {
         id: 1,
@@ -151,3 +150,25 @@ button.addEventListener("click", function () {
         }
     })
 })
+
+question.addEventListener("input", () => {
+    question.forEach(item => {
+        item.question = question.value
+    })
+})
+print(question)
+// question.forEach((question, index) => {
+//     question.addEventListener("input", function () {
+//         fetch('/create test', {
+//             method: "POST",
+//             body: JSON.stringify({
+//                 "value": question,
+//             }),
+//             headers: {
+//                 'Content-type': 'application/json'
+//             }
+//         })
+//     })
+// })
+
+

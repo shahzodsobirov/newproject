@@ -180,7 +180,6 @@ def choose_levels():
     levels = QuizLevels.query.all()
     if request.method == "POST":
         level = request.form.get("level")
-
         return redirect(url_for("creat_question", level=level))
     return render_template("choose levels.html", user=user, levels=levels)
 
