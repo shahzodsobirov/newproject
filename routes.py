@@ -14,7 +14,6 @@ def current_user():
 
 @app.route('/')
 def hello_world():  # put application's code here
-    print("hellomas")
     return render_template("main.html")
 
 
@@ -181,6 +180,10 @@ def choose_levels():
     if request.method == "POST":
         level = request.form.get("level")
         return redirect(url_for("creat_question", level=level))
+    if request.method == "POST":
+        level = request.form.get("level")
+        return redirect(url_for("test", level=level))
+
     return render_template("choose levels.html", user=user, levels=levels)
 
 
@@ -188,12 +191,28 @@ def choose_levels():
 def creat_question(level):
     subject = Subject.query.all()
     levels = QuizLevels.query.all()
-    return render_template("creat test.html", subject=subject, levels=levels, level=level)
+    variants = Variants.query.all()
+    return render_template("creat test.html", subject=subject, levels=levels, level=level, variants=variants)
 
 
-@app.route("/test", methods=["GET", "POST"])
-def test():
+@app.route("/test/<int:level_id>", methods=["POST"])
+def test(level_id):
     test = request.get_json()['list']
+    level_id = QuizLevels.query.filter(QuizLevels.id == level_id).first()
+    for item in test:
+        question = item["question"]
+        variants = item["variants"]
+        addquestions = Questions(question=question, levels_id=level_id.id,
+                                 subject_id=level_id.subject_id)
+        db.session.add(addquestions)
+        db.session.commit()
+        for var in variants:
+            variant = var["value"]
+            checked = var["checked"]
+            addvariants = Variants(variants=variant, answer=checked, levels_id=level_id.id,
+                                   subject_id=level_id.subject_id, question_id=addquestions.id)
+            db.session.add(addvariants)
+            db.session.commit()
     pprint(test)
     return jsonify({
         'success': True

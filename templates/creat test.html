@@ -7,8 +7,6 @@
 </head>
 <body>
 
-
-<h1>Hello</h1>
 <div class="menu">
     <a href="">Home</a>
     <a href="{{ url_for("register") }}">Register</a>
@@ -37,26 +35,9 @@
         </div>
 
         <div class="variant">
-{#            <div class="inp">#}
-{#                <h4>1)</h4>#}
-{#                <input type="text" placeholder="Enter your variant" name="variant" class="inp">#}
-{#                <input type="checkbox" data-id="1" class="checkbox">#}
-{#            </div>#}
-{#            <div class="inp">#}
-{#                <h4>2)</h4>#}
-{#                <input type="text" placeholder="Enter your variant" name="variant" class="inp2">#}
-{#                <input type="checkbox" data-id="1" class="checkbox">#}
-{#            </div>#}
-{#            <div class="inp">#}
-{#                <h4>2)</h4>#}
-{#                <input type="text" placeholder="Enter your variant" name="variant" class="inp3">#}
-{#                <input type="checkbox" data-id="1" class="checkbox">#}
-{#            </div>#}
-{#            <div class="inp">#}
-{#                <h4>2)</h4>#}
-{#                <input type="text" placeholder="Enter your variant" name="variant" class="inp4">#}
-{#                <input type="checkbox" data-id="1" class="checkbox">#}
-{#            </div>#}
+            {% for var in variants %}
+
+            {% endfor %}
         </div>
         <div class="plus2">
             +
@@ -95,7 +76,7 @@
                 <input type="checkbox">
             </div>
         </div>
-        <button>Sumbit</button>
+        <button data-id="{{ level }}">Sumbit</button>
     </div>
 </div>
 
