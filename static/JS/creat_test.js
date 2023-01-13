@@ -46,9 +46,9 @@ let question_list = [
         question: "",
         variants: [
             {
-                name : "variant1",
-                value : "",
-                checked : false
+                name: "variant1",
+                value: "",
+                checked: false
             },
         ]
 
@@ -59,7 +59,7 @@ let question_list = [
 const renderVariants = (list) => {
     variantsList.innerHTML = ""
     list.map((item) => {
-        item.variants.map((variant,index) => {
+        item.variants.map((variant, index) => {
             const elem = `
                 <div class="inp">
                     <h4>${index + 1})</h4>
@@ -80,19 +80,28 @@ renderVariants(question_list)
 function catchInputChange() {
 
     const inputs = document.querySelectorAll(".inp1")
-
+    const question = document.querySelector(".question")
     inputs.forEach(item => {
-        item.addEventListener("change", (e)=>{
+        item.addEventListener("change", (e) => {
 
             const index = item.getAttribute("data-index") // 0
             question_list = question_list.map(item => {
-                const newVariants = item.variants.map((variant,i) => {
+                const newVariants = item.variants.map((variant, i) => {
                     if (i === +index) {
-                        return {...variant,value: e.target.value}
+                        return {...variant, value: e.target.value}
                     }
                     return variant
                 })
-                return {...item,variants: newVariants}
+                return {...item, variants: newVariants}
+            })
+
+
+        })
+    })
+    question.addEventListener("change", (e) => {
+        question_list = question_list.map(item => {
+            const newQuestion = item.question.map((ques, i) => {
+                return {...ques, value: e.target.question}
             })
         })
     })
@@ -103,18 +112,18 @@ function catchCheckboxChange() {
     const checkboxes = document.querySelectorAll(".checkbox")
 
     checkboxes.forEach(item => {
-        item.addEventListener("change", (e)=>{
+        item.addEventListener("change", (e) => {
 
             const index = item.getAttribute("data-index")
             question_list = question_list.map(item => {
-                const newVariants = item.variants.map((variant,i) => {
+                const newVariants = item.variants.map((variant, i) => {
                     if (i === +index) {
-                        return {...variant,checked: e.target.checked}
+                        return {...variant, checked: e.target.checked}
                     }
                     return variant
                 })
 
-                return {...item,variants: newVariants}
+                return {...item, variants: newVariants}
             })
         })
     })
@@ -124,7 +133,7 @@ let variant = document.querySelector(".variant"), plus2 = document.querySelector
 plus2.addEventListener("click", () => {
     const newItem = {
         name: `variant${question_list[0].variants.length + 1}`,
-        value : "",
+        value: "",
         checked: false
     }
 
