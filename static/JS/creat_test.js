@@ -37,24 +37,15 @@ let question = document.querySelector(".question"), button = document.querySelec
     inp2 = document.querySelectorAll(".inp2"), inp3 = document.querySelectorAll(".inp3"),
     inp4 = document.querySelectorAll(".inp4"), level = document.querySelector(".level"),
     lev = document.querySelector(".lev"), checkboxes = document.querySelectorAll(".checkbox"),
-    sub = document.querySelector(".sub"),
-    variantsList = document.querySelector(".variant");
+    sub = document.querySelector(".sub"), variantsList = document.querySelector(".variant");
 
-let question_list = [
-    {
-        id: 1,
-        question: "",
-        variants: [
-            {
-                name: "variant1",
-                value: "",
-                checked: false
-            },
-        ]
+let question_list = [{
+    id: 1, question: "", variants: [{
+        name: "variant1", value: "", checked: false
+    },]
 
-    }
-];
-
+}];
+console.log(question_list)
 
 const renderVariants = (list) => {
     variantsList.innerHTML = ""
@@ -64,7 +55,7 @@ const renderVariants = (list) => {
                 <div class="inp">
                     <h4>${index + 1})</h4>
                     <input type="text"  data-index=${index} ${variant.value.length > 0 ? `value=${variant.value}` : null} placeholder="Enter your variant" name="variant" class="inp1">
-                    <input type="checkbox"  data-index=${index} class="checkbox"  ${variant.checked ? `checked` : null} >
+                    <input type="checkbox"  data-index=${index} class="checkbox" data-id="{{ var.id }}"  ${variant.checked ? `checked` : null} >
                 </div>
             `
             variantsList.innerHTML += elem
@@ -99,10 +90,8 @@ function catchInputChange() {
         })
     })
     question.addEventListener("change", (e) => {
-        question_list = question_list.map(item => {
-            const newQuestion = item.question.map((ques, i) => {
-                return {...ques, value: e.target.question}
-            })
+        question_list.forEach((item) => {
+            item.question = question.value
         })
     })
 }
@@ -132,9 +121,7 @@ function catchCheckboxChange() {
 let variant = document.querySelector(".variant"), plus2 = document.querySelector(".plus2");
 plus2.addEventListener("click", () => {
     const newItem = {
-        name: `variant${question_list[0].variants.length + 1}`,
-        value: "",
-        checked: false
+        name: `variant${question_list[0].variants.length + 1}`, value: "", checked: false
     }
 
     question_list[0].variants.push(newItem)
@@ -143,7 +130,7 @@ plus2.addEventListener("click", () => {
 
 
 button.addEventListener("click", function () {
-    fetch('/test', {
+    fetch('/test/' + button.dataset.id, {
         method: "POST", body: JSON.stringify({
             "list": question_list,
         }), headers: {
