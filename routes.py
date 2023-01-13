@@ -14,6 +14,7 @@ def current_user():
 
 @app.route('/')
 def hello_world():  # put application's code here
+    print("hello")
     return render_template("main.html")
 
 
