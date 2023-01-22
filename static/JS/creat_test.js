@@ -139,63 +139,27 @@ plus2.addEventListener("click", () => {
 
 const input = document.querySelectorAll('.file');
 button.addEventListener("click", async function () {
-    // fetch('/test/' + button.dataset.id, {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //         "list": question_list,
-    //     }), headers: {
-    //         'Content-type': 'application/json'
-    //     }
-    // })
-
-    const fromData = new FormData();
-
-
-    await input.forEach((inp,index) => {
-        const files = inp.files;
-        fromData.append('images', {inp:index,file:files[0]});
+    fetch('/test/' + button.dataset.id, {
+        method: "POST",
+        body: JSON.stringify({
+            "list": question_list,
+        }), headers: {
+            'Content-type': 'application/json'
+        }
     })
 
-
-    fromData.getAll()
-    await fetch('/image_files', {
-            method: 'POST',
-            body: fromData,
-        })
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log(data)
-    //     // document.body.style.background = `url(${data.image})`;
-    //     // document.body.style.backgroundSize = "cover"
+    // const fromData = new FormData();
+    // await input.forEach((inp,index) => {
+    //     const files = inp.files;
+    //     fromData.append('images', {inp:index,file:files[0]});
     // })
-    // .catch(error => {
-    //     console.log(error)
-    // })
+    // fromData.getAll()
+    // await fetch('/image_files', {
+    //         method: 'POST',
+    //         body: fromData,
+    //     })
 })
 
-// input.forEach(inp => {
-//     inp.addEventListener('input', even => {
-//         const files = even.target.files;
-//         const fromData = new FormData();
-//         fromData.append('image', files[0]);
-//         fetch('/image_files', {
-//             method: 'POST',
-//             body: fromData,
-//         })
-//             .then(response => response.json())
-//             .then(data => {
-//                 console.log(data)
-//                 document.body.style.background = `url(${data.image})`;
-//                 document.body.style.backgroundSize = "cover"
-//             })
-//             .catch(error => {
-//                 console.log(error)
-//             })
-//         console.log(fromData)
-//     })
-// })
-
-// })
 
 question.addEventListener("input", () => {
     question.forEach(item => {
@@ -203,19 +167,7 @@ question.addEventListener("input", () => {
     })
 })
 print(question)
-// question.forEach((question, index) => {
-//     question.addEventListener("input", function () {
-//         fetch('/create test', {
-//             method: "POST",
-//             body: JSON.stringify({
-//                 "value": question,
-//             }),
-//             headers: {
-//                 'Content-type': 'application/json'
-//             }
-//         })
-//     })
-// })
+
 
 
 

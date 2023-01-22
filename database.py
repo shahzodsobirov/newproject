@@ -98,6 +98,7 @@ class Questions(db.Model):
     question = Column(String)
     variants = db.relationship("Variants", backref="questions", order_by="Variants.id")
 
+
 class Variants(db.Model):
     __tablename__ = "variants"
     id = Column(Integer, primary_key=True)
@@ -106,3 +107,9 @@ class Variants(db.Model):
     question_id = Column(Integer, ForeignKey("questions.id"))
     variants = Column(String)
     answer = Column(Boolean)
+
+
+class VariantsTypes(db.Model):
+    __tablename__ = "variantstypes"
+    id = Column(Integer, primary_key=True)
+    name = Column(String)

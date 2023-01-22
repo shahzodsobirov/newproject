@@ -192,7 +192,8 @@ def creat_question(level):
     subject = Subject.query.all()
     levels = QuizLevels.query.all()
     variants = Variants.query.all()
-    return render_template("creat test.html", subject=subject, levels=levels, level=level, variants=variants)
+    types = VariantsTypes.query.all()
+    return render_template("creat test.html", types=types, subject=subject, levels=levels, level=level, variants=variants)
 
 
 @app.route("/test/<int:level_id>", methods=["POST"])
@@ -242,10 +243,4 @@ def levels():
     return render_template("quizlevels.html", subject=subject)
 
 
-@app.route("/image_files", methods=["GET", "POST"])
-def image_files():
-    images = request.files.getlist("images")
-    print(images)
-    print("bitch")
 
-    return jsonify({"msg": "Hello suka"})
