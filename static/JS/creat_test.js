@@ -37,7 +37,12 @@ let question = document.querySelector(".question"), button = document.querySelec
     inp2 = document.querySelectorAll(".inp2"), inp3 = document.querySelectorAll(".inp3"),
     inp4 = document.querySelectorAll(".inp4"), level = document.querySelector(".level"),
     lev = document.querySelector(".lev"), checkboxes = document.querySelectorAll(".checkbox"),
-    sub = document.querySelector(".sub"), variantsList = document.querySelector(".variant");
+
+    sub = document.querySelector(".sub"),
+    variantsList = document.querySelector(".variant");
+
+
+
 
 let question_list = [{
     id: 1,
@@ -151,6 +156,7 @@ button.addEventListener("click", async function () {
         fromData.append('images', {inp:index,file:files[0]});
     })
 
+
     fromData.getAll()
     await fetch('/image_files', {
             method: 'POST',
@@ -188,3 +194,28 @@ button.addEventListener("click", async function () {
 //         console.log(fromData)
 //     })
 // })
+
+// })
+
+question.addEventListener("input", () => {
+    question.forEach(item => {
+        item.question = question.value
+    })
+})
+print(question)
+// question.forEach((question, index) => {
+//     question.addEventListener("input", function () {
+//         fetch('/create test', {
+//             method: "POST",
+//             body: JSON.stringify({
+//                 "value": question,
+//             }),
+//             headers: {
+//                 'Content-type': 'application/json'
+//             }
+//         })
+//     })
+// })
+
+
+
