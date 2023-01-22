@@ -22,11 +22,13 @@ body {
 
 .container {
     width: 1400px;
-    height: 427px;
+    height: 600px;
     border: 2px black solid;
+    align-items: center;
     margin-top: 50px;
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
 }
 
 .variant_menu {
@@ -40,7 +42,7 @@ body {
     border: 2px black solid;
 }
 
-.table1{
+.table1 {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -62,7 +64,7 @@ body {
     color: black;
 }
 
-.inp{
+.inp {
     width: 300px;
     display: flex;
     align-items: center;
@@ -74,17 +76,21 @@ body {
     flex-wrap: wrap;
     margin-top: 50px;
 }
+
 .variant {
     display: none;
 }
-input{
+
+input {
     width: 200px;
     height: 40px;
 }
-button{
+
+button {
     margin-top: 40px;
 }
-.plus{
+
+.plus {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -96,7 +102,8 @@ button{
     margin-top: 20px;
     cursor: pointer;
 }
-.plus2{
+
+.plus2 {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -107,4 +114,10 @@ button{
     font-size: 30px;
     margin-top: 20px;
     cursor: pointer;
+}
+
+.cont2 {
+    display: flex;
+    width: 1400px;
+    justify-content: space-around;
 }

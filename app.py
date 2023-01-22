@@ -4,6 +4,7 @@ from sqlalchemy import Column, String, Integer, Boolean, ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from flask_migrate import Migrate
+import json
 import os
 from database import *
 

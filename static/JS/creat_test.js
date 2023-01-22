@@ -32,7 +32,7 @@ function removeLink() {
 const block = document.querySelector('.block');
 
 
-let question = document.querySelector(".question"), button = document.querySelector("button"),
+let question = document.querySelector(".question"), button = document.querySelector(".button"),
     subject = document.querySelector(".subject"), inp = document.querySelectorAll(".inp"),
     inp2 = document.querySelectorAll(".inp2"), inp3 = document.querySelectorAll(".inp3"),
     inp4 = document.querySelectorAll(".inp4"), level = document.querySelector(".level"),
@@ -40,10 +40,13 @@ let question = document.querySelector(".question"), button = document.querySelec
     sub = document.querySelector(".sub"), variantsList = document.querySelector(".variant");
 
 let question_list = [{
-    id: 1, question: "", variants: [{
-        name: "variant1", value: "", checked: false
+    id: 1,
+    question: "",
+    variants: [{
+        name: "variant1",
+        value: "",
+        checked: false
     },]
-
 }];
 console.log(question_list)
 
@@ -85,8 +88,6 @@ function catchInputChange() {
                 })
                 return {...item, variants: newVariants}
             })
-
-
         })
     })
     question.addEventListener("change", (e) => {
@@ -121,7 +122,9 @@ function catchCheckboxChange() {
 let variant = document.querySelector(".variant"), plus2 = document.querySelector(".plus2");
 plus2.addEventListener("click", () => {
     const newItem = {
-        name: `variant${question_list[0].variants.length + 1}`, value: "", checked: false
+        name: `variant${question_list[0].variants.length + 1}`,
+        value: "",
+        checked: false
     }
 
     question_list[0].variants.push(newItem)
@@ -129,12 +132,59 @@ plus2.addEventListener("click", () => {
 })
 
 
-button.addEventListener("click", function () {
-    fetch('/test/' + button.dataset.id, {
-        method: "POST", body: JSON.stringify({
-            "list": question_list,
-        }), headers: {
-            'Content-type': 'application/json'
-        }
+const input = document.querySelectorAll('.file');
+button.addEventListener("click", async function () {
+    // fetch('/test/' + button.dataset.id, {
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //         "list": question_list,
+    //     }), headers: {
+    //         'Content-type': 'application/json'
+    //     }
+    // })
+
+    const fromData = new FormData();
+
+
+    await input.forEach((inp,index) => {
+        const files = inp.files;
+        fromData.append('images', {inp:index,file:files[0]});
     })
+
+    fromData.getAll()
+    await fetch('/image_files', {
+            method: 'POST',
+            body: fromData,
+        })
+    // .then(response => response.json())
+    // .then(data => {
+    //     console.log(data)
+    //     // document.body.style.background = `url(${data.image})`;
+    //     // document.body.style.backgroundSize = "cover"
+    // })
+    // .catch(error => {
+    //     console.log(error)
+    // })
 })
+
+// input.forEach(inp => {
+//     inp.addEventListener('input', even => {
+//         const files = even.target.files;
+//         const fromData = new FormData();
+//         fromData.append('image', files[0]);
+//         fetch('/image_files', {
+//             method: 'POST',
+//             body: fromData,
+//         })
+//             .then(response => response.json())
+//             .then(data => {
+//                 console.log(data)
+//                 document.body.style.background = `url(${data.image})`;
+//                 document.body.style.backgroundSize = "cover"
+//             })
+//             .catch(error => {
+//                 console.log(error)
+//             })
+//         console.log(fromData)
+//     })
+// })
