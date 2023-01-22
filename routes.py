@@ -180,10 +180,6 @@ def choose_levels():
     if request.method == "POST":
         level = request.form.get("level")
         return redirect(url_for("creat_question", level=level))
-    if request.method == "POST":
-        level = request.form.get("level")
-        return redirect(url_for("test", level=level))
-
     return render_template("choose levels.html", user=user, levels=levels)
 
 
@@ -240,3 +236,10 @@ def levels():
         return redirect(url_for("levels"))
     subject = Subject.query.all()
     return render_template("quizlevels.html", subject=subject)
+
+
+@app.route("/all_questions", methods=["GET", "POST"])
+def all_questions():
+    user = current_user()
+    questions = Questions.query.all()
+    return render_template("all_questions.html", user=user, questions=questions)

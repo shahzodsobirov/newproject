@@ -19,6 +19,7 @@
     <a href="{{ url_for("choose") }}">creat_question</a>
     <a href="{{ url_for("subject") }}">subject</a>
     <a href="{{ url_for("levels") }}">levels</a>
+    <a href="{{ url_for("all_questions") }}">All questions</a>
 </div>
 <div class="container">
     <div class="table1">
@@ -45,7 +46,7 @@
         <div class="variant">
             <div class="inp">
                 <h4>1)</h4>
-                <input type="file" placeholder="Enter your variant">
+                <input type="file" id="file" accept="image/*" placeholder="Enter your variant">
                 <input type="checkbox">
             </div>
             <div class="inp">

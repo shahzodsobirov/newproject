@@ -37,18 +37,13 @@ let question = document.querySelector(".question"), button = document.querySelec
     inp2 = document.querySelectorAll(".inp2"), inp3 = document.querySelectorAll(".inp3"),
     inp4 = document.querySelectorAll(".inp4"), level = document.querySelector(".level"),
     lev = document.querySelector(".lev"), checkboxes = document.querySelectorAll(".checkbox"),
-
     sub = document.querySelector(".sub"),
     variantsList = document.querySelector(".variant");
-
-
-
 
 let question_list = [{
     id: 1, question: "", variants: [{
         name: "variant1", value: "", checked: false
     },]
-
 }];
 console.log(question_list)
 
@@ -123,17 +118,15 @@ function catchCheckboxChange() {
     })
 }
 
-let variant = document.querySelector(".variant"), plus2 = document.querySelector(".plus2");
+let variant = document.querySelector(".variant"),
+    plus2 = document.querySelector(".plus2");
 plus2.addEventListener("click", () => {
     const newItem = {
         name: `variant${question_list[0].variants.length + 1}`, value: "", checked: false
     }
-
     question_list[0].variants.push(newItem)
     renderVariants(question_list)
 })
-
-
 button.addEventListener("click", function () {
     fetch('/test/' + button.dataset.id, {
         method: "POST", body: JSON.stringify({
@@ -143,13 +136,30 @@ button.addEventListener("click", function () {
         }
     })
 })
-
 question.addEventListener("input", () => {
     question.forEach(item => {
         item.question = question.value
     })
 })
 print(question)
+document.getElementById('file').addEventListener('change', event => {
+    const files = event.target.files;
+    const fromData = new FormData();
+    fromData.append('image', files[0]);
+    fetch('http://127.0.0.1:5000', {
+        method: 'POST',
+        body: fromData,
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            document.body.style.background = `url(${data.image})`;
+            document.body.style.backgroundSize = "cover"
+        })
+        .catch(error => {
+            console.log(error)
+        })
+})
 // question.forEach((question, index) => {
 //     question.addEventListener("input", function () {
 //         fetch('/create test', {
@@ -163,5 +173,3 @@ print(question)
 //         })
 //     })
 // })
-
-
