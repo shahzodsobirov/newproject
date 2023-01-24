@@ -37,16 +37,13 @@ let question = document.querySelector(".question"), button = document.querySelec
     inp2 = document.querySelectorAll(".inp2"), inp3 = document.querySelectorAll(".inp3"),
     inp4 = document.querySelectorAll(".inp4"), level = document.querySelector(".level"),
     lev = document.querySelector(".lev"), checkboxes = document.querySelectorAll(".checkbox"),
-
     sub = document.querySelector(".sub"),
     variantsList = document.querySelector(".variant");
-
-
-
 
 let question_list = [{
     id: 1,
     question: "",
+    type: "",
     variants: [{
         name: "variant1",
         value: "",
@@ -102,6 +99,18 @@ function catchInputChange() {
     })
 }
 
+const type = document.querySelectorAll(".controll_active");
+
+type.forEach(item=>{
+    item.addEventListener("click", ()=>{
+        let type_id = item.dataset.id
+        console.log(type_id)
+        question_list.forEach((list)=>{
+            list.type = type_id
+        })
+    })
+})
+
 function catchCheckboxChange() {
 
     const checkboxes = document.querySelectorAll(".checkbox")
@@ -124,14 +133,14 @@ function catchCheckboxChange() {
     })
 }
 
-let variant = document.querySelector(".variant"), plus2 = document.querySelector(".plus2");
+let variant = document.querySelector(".variant"),
+    plus2 = document.querySelector(".plus2");
 plus2.addEventListener("click", () => {
     const newItem = {
         name: `variant${question_list[0].variants.length + 1}`,
         value: "",
         checked: false
     }
-
     question_list[0].variants.push(newItem)
     renderVariants(question_list)
 })
@@ -139,14 +148,22 @@ plus2.addEventListener("click", () => {
 
 const input = document.querySelectorAll('.file');
 button.addEventListener("click", async function () {
+
     fetch('/test/' + button.dataset.id, {
         method: "POST",
         body: JSON.stringify({
             "list": question_list,
         }), headers: {
             'Content-type': 'application/json'
-        }
+        },
     })
+    // const fromData = new FormData();
+    //
+    //
+    // await input.forEach((inp, index) => {
+    //     const files = inp.files;
+    //     fromData.append('images', {inp: index, file: files[0]});\
+    // })
 
     // const fromData = new FormData();
     // await input.forEach((inp,index) => {
@@ -159,15 +176,4 @@ button.addEventListener("click", async function () {
     //         body: fromData,
     //     })
 })
-
-
-question.addEventListener("input", () => {
-    question.forEach(item => {
-        item.question = question.value
-    })
-})
-print(question)
-
-
-
 

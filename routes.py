@@ -180,10 +180,6 @@ def choose_levels():
     if request.method == "POST":
         level = request.form.get("level")
         return redirect(url_for("creat_question", level=level))
-    if request.method == "POST":
-        level = request.form.get("level")
-        return redirect(url_for("test", level=level))
-
     return render_template("choose levels.html", user=user, levels=levels)
 
 
@@ -193,7 +189,8 @@ def creat_question(level):
     levels = QuizLevels.query.all()
     variants = Variants.query.all()
     types = VariantsTypes.query.all()
-    return render_template("creat test.html", types=types, subject=subject, levels=levels, level=level, variants=variants)
+    return render_template("creat test.html", types=types, subject=subject, levels=levels, level=level,
+                           variants=variants)
 
 
 @app.route("/test/<int:level_id>", methods=["POST"])
@@ -203,8 +200,9 @@ def test(level_id):
     for item in test:
         question = item["question"]
         variants = item["variants"]
+        type = item["type"]
         addquestions = Questions(question=question, levels_id=level_id.id,
-                                 subject_id=level_id.subject_id)
+                                 subject_id=level_id.subject_id, type_id=type)
         db.session.add(addquestions)
         db.session.commit()
         for var in variants:
@@ -243,4 +241,28 @@ def levels():
     return render_template("quizlevels.html", subject=subject)
 
 
+@app.route("/image_files", methods=["GET", "POST"])
+def image_files():
+    images = request.files.getlist("images")
+    print(images)
+    print("bitch")
+    return jsonify({"msg": "Hello suka"})
 
+
+@app.route("/creat_variant", methods=["GET"])
+def creat_variant():
+    subject = Subject.query.all()
+    return render_template("creat variant in ques.html", subject=subject)
+
+
+@app.route("/lev/<int:sub_id>", methods=["GET", "POST"])
+def lev(sub_id):
+    # subject = Subject.query.all()
+    levels = QuizLevels.query.filter(QuizLevels.subject_id == sub_id).order_by(QuizLevels.id)
+    return render_template("lev.html", levels=levels)
+
+
+@app.route("/var/<int:level_id>", methods=["GET", "POST"])
+def var(level_id):
+    question = Questions.query.filter(Questions.levels_id == level_id).order_by(Questions.id).all()
+    return render_template("var.html", question=question)
