@@ -131,7 +131,6 @@ plus2.addEventListener("click", () => {
     question_list[0].variants.push(newItem)
     renderVariants(question_list)
 })
-<<<<<<< HEAD
 button.addEventListener("click", function () {
     fetch('/test/' + button.dataset.id, {
         method: "POST", body: JSON.stringify({
@@ -139,35 +138,20 @@ button.addEventListener("click", function () {
         }), headers: {
             'Content-type': 'application/json'
         }
-=======
-
-
-const input = document.querySelectorAll('.file');
-button.addEventListener("click", async function () {
-    // fetch('/test/' + button.dataset.id, {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //         "list": question_list,
-    //     }), headers: {
-    //         'Content-type': 'application/json'
-    //     }
-    // })
+    })
 
     const fromData = new FormData();
-
-
-    await input.forEach((inp,index) => {
-        const files = inp.files;
-        fromData.append('images', {inp:index,file:files[0]});
->>>>>>> 16816cd6416e980a372759501ba789ce79866b0a
-    })
+    await input.forEach((inp, index) => {
+    const files = inp.files;
+    fromData.append('images', {inp: index, file: files[0]});
+})
 
 
     fromData.getAll()
     await fetch('/image_files', {
-            method: 'POST',
-            body: fromData,
-        })
+        method: 'POST',
+        body: fromData,
+    })
     // .then(response => response.json())
     // .then(data => {
     //     console.log(data)
@@ -178,8 +162,6 @@ button.addEventListener("click", async function () {
     //     console.log(error)
     // })
 })
-<<<<<<< HEAD
-=======
 
 // input.forEach(inp => {
 //     inp.addEventListener('input', even => {
@@ -204,14 +186,11 @@ button.addEventListener("click", async function () {
 // })
 
 // })
-
->>>>>>> 16816cd6416e980a372759501ba789ce79866b0a
 question.addEventListener("input", () => {
     question.forEach(item => {
         item.question = question.value
     })
 })
-print(question)
 document.getElementById('file').addEventListener('change', event => {
     const files = event.target.files;
     const fromData = new FormData();
@@ -242,11 +221,9 @@ document.getElementById('file').addEventListener('change', event => {
 //             }
 //         })
 //     })
-<<<<<<< HEAD
-// })
-=======
+
 // })
 
+// })
 
 
->>>>>>> 16816cd6416e980a372759501ba789ce79866b0a

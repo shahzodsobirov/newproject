@@ -62,7 +62,7 @@ def creat_group():
         teacher = request.form.get("teacher")
         print(teacher)
         add = Group(name=name, teacher_id=teacher)
-        db.session.add(aчdd)
+        db.session.add(add)
         db.session.commit()
         # students = db.session.query(Users).join(Users.student).options(contains_eager(Users.student)).filter(
         #     Student.status == True).order_by(Users.id).all()
@@ -238,18 +238,16 @@ def levels():
     return render_template("quizlevels.html", subject=subject)
 
 
-<<<<<<< HEAD
 @app.route("/all_questions", methods=["GET", "POST"])
 def all_questions():
     user = current_user()
     questions = Questions.query.all()
     return render_template("all_questions.html", user=user, questions=questions)
-=======
+
+
 @app.route("/image_files", methods=["GET", "POST"])
 def image_files():
     images = request.files.getlist("images")
     print(images)
     print("bitch")
-
     return jsonify({"msg": "Hello suka"})
->>>>>>> 16816cd6416e980a372759501ba789ce79866b0a
