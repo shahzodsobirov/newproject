@@ -1,0 +1,36 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/image.css">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>add image</h1>
+<p>{{ question.question }}</p>
+<form action="{{ url_for('image', question_id=question.id) }}" method="post" enctype="multipart/form-data">
+
+    <input type="file" name="variant">
+    <input type="submit">
+
+
+    <div class="imagee_main">
+        {% for variants in variants %}
+
+            <div class="img">
+                <img class="imagee" src="{{ variants.variants }}" alt="">
+                <input class="checkbox2" type="checkbox" data-id="{{ variants.id }}" {% if variants.check %}
+                       checked {% endif %}>
+            </div>
+        {% endfor %}
+    </div>
+<button>add</button>
+</form>
+<script src="../static/JS/image.js"></script>
+
+</body>
+</html>

@@ -2,6 +2,29 @@ body {
     background-color: rgba(255, 235, 55, 1);
 }
 
+.creat_variant {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.creat_variant_mini {
+    width: 150px;
+    height: 40px;
+    border: 2.5px solid white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(147, 147, 147, 1);
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .menu a {
     text-decoration: none;
     color: #0f536a;
@@ -28,7 +51,7 @@ button {
     height: 40px;
     background-color: rgba(255, 235, 55, 1);
     border: none;
-    color: rgba(147, 147, 147, 1);
+    color: white;
 }
 
 .choose_lev {
@@ -47,27 +70,4 @@ button {
     align-items: center;
     margin-top: 70px;
 
-}
-
-.subject_input {
-    margin-top: 30px;
-}
-
-.subject_input_mini {
-    display: flex;
-    flex-direction: column;
-}
-
-.subjects_button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 60px;
-}
-.select{
-    width: 335px;
-    height: 40px;
-}
-.option{
-    text-align: center;
 }

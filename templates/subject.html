@@ -18,12 +18,37 @@
     <a href="{{ url_for("choose") }}">creat_question</a>
     <a href="{{ url_for("subject") }}">subject</a>
     <a href="{{ url_for("levels") }}">levels</a>
+    <a href="{{ url_for("creat_variant") }}">creat_variant</a>
 </div>
-<div class="subject">
-    <form action="{{ url_for("subject") }}" method="post">
-        <input type="text" placeholder="Enter your subject" name="subject">
-        <button>Sumbit</button>
-    </form>
+<div class="kottasi">
+    <div class="subject">
+        <form action="{{ url_for("subject") }}" method="post">
+            <div class="subject_input">
+                <div class="subject_input_mini">
+                    <h3>Subject</h3>
+                    <input type="text" placeholder="Enter your subject" name="subject">
+                </div>
+                <div class="subject_input_mini">
+                    <h3>Rasm</h3>
+                    <input type="text" placeholder="Enter your subjects picture" name="subject">
+                </div>
+            </div>
+            <div class="subjects_button">
+                <button>Sumbit</button>
+            </div>
+        </form>
+    </div>
+    <div class="subject_about">
+        <div class="subject_about_main">
+            <div class="subject_about_main_mini">
+                <img src="../static/image/windows-10-dark-blue-5k-8k-2880x1800-733.jpg" alt="">
+            </div>
+            <div class="subject_about_main_mini_word">
+                <h3>English</h3>
+            </div>
+        </div>
+
+    </div>
 </div>
 </body>
 </html>

@@ -43,6 +43,7 @@ let question = document.querySelector(".question"), button = document.querySelec
 let question_list = [{
     id: 1,
     question: "",
+    type: "",
     variants: [{
         name: "variant1",
         value: "",
@@ -98,6 +99,18 @@ function catchInputChange() {
     })
 }
 
+const type = document.querySelectorAll(".controll_active");
+
+type.forEach(item => {
+    item.addEventListener("click", () => {
+        let type_id = item.dataset.id
+        console.log(type_id)
+        question_list.forEach((list) => {
+            list.type = type_id
+        })
+    })
+})
+
 function catchCheckboxChange() {
 
     const checkboxes = document.querySelectorAll(".checkbox")
@@ -139,16 +152,15 @@ button.addEventListener("click", function () {
             'Content-type': 'application/json'
         }
     })
-
     const fromData = new FormData();
-    await input.forEach((inp, index) => {
-    const files = inp.files;
-    fromData.append('images', {inp: index, file: files[0]});
-})
+    input.forEach((inp, index) => {
+        const files = inp.files;
+        fromData.append('images', {inp: index, file: files[0]});
+    })
 
 
     fromData.getAll()
-    await fetch('/image_files', {
+    fetch('/image_files', {
         method: 'POST',
         body: fromData,
     })
@@ -157,11 +169,38 @@ button.addEventListener("click", function () {
     //     console.log(data)
     //     // document.body.style.background = `url(${data.image})`;
     //     // document.body.style.backgroundSize = "cover"
-    // })
-    // .catch(error => {
-    //     console.log(error)
-    // })
-})
+
+
+    const input = document.querySelectorAll('.file');
+    button.addEventListener("click", async function () {
+
+        fetch('/test/' + button.dataset.id, {
+            method: "POST",
+            body: JSON.stringify({
+                "list": question_list,
+            }), headers: {
+                'Content-type': 'application/json'
+            },
+        })
+        // const fromData = new FormData();
+        //
+        //
+        // await input.forEach((inp, index) => {
+        //     const files = inp.files;
+        //     fromData.append('images', {inp: index, file: files[0]});\
+        // })
+
+        // const fromData = new FormData();
+        // await input.forEach((inp,index) => {
+        //     const files = inp.files;
+        //     fromData.append('images', {inp:index,file:files[0]});
+        // })
+        // fromData.getAll()
+        // await fetch('/image_files', {
+        //         method: 'POST',
+        //         body: fromData,
+        //     })
+    })
 
 // input.forEach(inp => {
 //     inp.addEventListener('input', even => {
@@ -186,28 +225,29 @@ button.addEventListener("click", function () {
 // })
 
 // })
-question.addEventListener("input", () => {
-    question.forEach(item => {
-        item.question = question.value
-    })
-})
-document.getElementById('file').addEventListener('change', event => {
-    const files = event.target.files;
-    const fromData = new FormData();
-    fromData.append('image', files[0]);
-    fetch('http://127.0.0.1:5000', {
-        method: 'POST',
-        body: fromData,
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            document.body.style.background = `url(${data.image})`;
-            document.body.style.backgroundSize = "cover"
+    question.addEventListener("input", () => {
+        question.forEach(item => {
+            item.question = question.value
         })
-        .catch(error => {
-            console.log(error)
+    })
+    document.getElementById('file').addEventListener('change', event => {
+        const files = event.target.files;
+        const fromData = new FormData();
+        fromData.append('image', files[0]);
+        fetch('http://127.0.0.1:5000', {
+            method: 'POST',
+            body: fromData,
         })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                document.body.style.background = `url(${data.image})`;
+                document.body.style.backgroundSize = "cover"
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    })
 })
 // question.forEach((question, index) => {
 //     question.addEventListener("input", function () {
@@ -225,5 +265,4 @@ document.getElementById('file').addEventListener('change', event => {
 // })
 
 // })
-
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/var.css">
+</head>
+<body>
+
+<div class="creat_variant">
+    {% for que in question %}
+        <a href="{{ url_for('image',question_id=que.id) }}">
+            <div class="creat_variant_mini">
+                {#            <a href="{{ url_for('lev',sub_id=sub.id) }}">{{ sub.name }}</a>#}
+                <p>{{ que.question }}</p>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+
+</body>
+</html>

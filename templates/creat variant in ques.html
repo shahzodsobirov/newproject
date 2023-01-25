@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/creat_variant%20in%20ques.css">
+</head>
+<body>
+<form action="{{ url_for("creat_variant") }}" method="post">
+
+    <div class="creat_variant">
+        {% for sub in subject %}
+            <a href="{{ url_for('lev',sub_id=sub.id) }}">
+                <div class="creat_variant_mini">
+                    {#            <a href="{{ url_for('lev',sub_id=sub.id) }}">{{ sub.name }}</a>#}
+                    <p>{{ sub.name }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+</form>
+{##}
+{#<div class="kottasi">#}
+{#    <div class="choose_lev">#}
+{#        <form action="{{ url_for("levels") }}" method="post">#}
+{#        <form action="{{ url_for("creat_variant") }}" method="post">#}
+{##}
+{#            <div class="subject_input">#}
+{#                <div class="subject_input_mini">#}
+{##}
+{#                    <div class="subject_input_mini">#}
+{#                        <h3>Choose subject</h3>#}
+{#                        <select class="select" name="subject" id="">#}
+{#                            {% for sub in subject %}#}
+{#                                <option class="option" value="{{ sub.id }}">{{ sub.name }}</option>#}
+{#                            {% endfor %}#}
+{#                        </select>#}
+{#                    </div>#}
+{##}
+{#                    <div class="subject_input_mini">#}
+{#                        <h3>Level</h3>#}
+{##}
+{#                        <input type="text" placeholder="Enter your levels" name="levels">#}
+{#                    </div>#}
+{##}
+{##}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="subjects_button">#}
+{#                <button>Sumbit</button>#}
+{#            </div>#}
+{#        </form>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+</body>
+</html>
