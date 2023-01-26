@@ -320,3 +320,15 @@ def for_fetch(fetch_id):
     return jsonify({
         "success": True
     })
+
+
+@app.route("/create_lesson", methods=["GET", "POST"])
+def create_lesson():
+    user = current_user()
+    return render_template("create_lesson.html", user=user)
+
+
+@app.route("/esse_type", methods=["GET", "POST"])
+def esse_type():
+    user = current_user()
+    return render_template("esse_type.html", user=user)

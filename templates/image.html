@@ -16,19 +16,22 @@
 
     <input type="file" name="variant">
     <input type="submit">
-
-
-    <div class="imagee_main">
-        {% for variants in variants %}
-
-            <div class="img">
-                <img class="imagee" src="{{ variants.variants }}" alt="">
-                <input class="checkbox2" type="checkbox" data-id="{{ variants.id }}" {% if variants.check %}
-                       checked {% endif %}>
-            </div>
-        {% endfor %}
+    <div class="all">
+        <div class="subject_about">
+            {% for variants in variants %}
+                <div class="subject_about_main">
+                    <div class="subject_about_main_mini">
+                        <img class="imagee" src="{{ variants.variants }}" alt="">
+                    </div>
+                    <div class="subject_about_main_mini_word">
+                        <input class="checkbox2" type="checkbox" data-id="{{ variants.id }}" {% if variants.check %}
+                               checked {% endif %}>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-<button>add</button>
+    <button>add</button>
 </form>
 <script src="../static/JS/image.js"></script>
 

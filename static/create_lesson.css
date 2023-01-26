@@ -20,7 +20,7 @@ body {
 
 .subject {
     width: 400px;
-    height: 400px;
+    height: 532px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +40,9 @@ input {
 }
 
 .subject_input {
+    overflow: auto;
     margin-top: 30px;
+    height: 386px;
 }
 
 .subject_input_mini {
@@ -62,28 +64,10 @@ button {
     border: none;
     color: rgba(147, 147, 147, 1);
 }
-
-/*#2*/
-.subject_about {
-    width: 647px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.select{
+    width: 335px;
+    height: 40px;
 }
-
-.subject_about_main {
-    width: 310px;
-    height: 248px;
-    border: 0.5px solid black;
-    margin: 5px;
+.option{
+    text-align: center;
 }
-
-.subject_about_main_mini img {
-    width: 310px;
-    background-size: cover;
-}
-
-.subject_about_main_mini_word {
-    margin: 10px;
-}
-
