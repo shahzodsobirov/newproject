@@ -332,3 +332,27 @@ def create_lesson():
 def esse_type():
     user = current_user()
     return render_template("esse_type.html", user=user)
+
+
+@app.route("/open_lesson", methods=["GET", "POST"])
+def open_lesson():
+    user = current_user()
+    return render_template("open_lesson.html", user=user)
+
+
+@app.route("/esse_task1", methods=["GET", "POST"])
+def esse_task1():
+    user = current_user()
+    return render_template("esse_task1.html", user=user)
+
+
+@app.route("/create_task", methods=["GET", "POST"])
+def create_task():
+    user = current_user()
+    return render_template("create_task.html", user=user)
+
+
+@app.route("/create_type", methods=["GET", "POST"])
+def create_type():
+    user = current_user()
+    return render_template("create_type.html", user=user)

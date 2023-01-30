@@ -1,6 +1,7 @@
 body {
     background-color: rgba(255, 235, 55, 1);
 }
+
 .menu {
     width: 1400px;
     height: 50px;
@@ -10,11 +11,13 @@ body {
     justify-content: space-around;
     align-items: center;
 }
+
 .menu a {
     text-decoration: none;
     color: #0f536a;
     font-size: 30px;
 }
+
 .subject {
     width: 400px;
     height: 520px;

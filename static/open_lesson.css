@@ -1,0 +1,51 @@
+body {
+    background-color: rgba(255, 235, 55, 1);
+}
+
+.menu a {
+    text-decoration: none;
+    color: #0f536a;
+    font-size: 30px;
+}
+
+.menu {
+    width: 1400px;
+    height: 50px;
+    border-radius: 10px;
+    background-image: linear-gradient(to left, #0061ff, #60efff);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.choose_lev {
+    width: 720px;
+    height: 652px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+.kottasi {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.subject_input {
+    margin-top: 20px;
+    overflow: auto;
+    height: 650px;
+}
+
+.subject_input_mini {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 600px;
+    height: 60px;
+    margin: 15px;
+    background-color: rgba(255, 255, 0, 0.78);
+}
